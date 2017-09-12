@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/catalogView"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.android.example.iithplacement.CatalogActivity"
+    tools:showIn="@layout/app_bar_catalog">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainRelativeBackground"></View>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainRelative">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:id="@+id/logoImage">
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/iith_logo"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/logoImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textIIT">
+                <TextView
+                    
+                    android:id="@+id/bodyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"
+                    android:text="TRAINING AND PLACEMENT CELL \n IIT HYDERABAD"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/director_tab"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/magnitude_director"
+                android:padding="16dp"
+                android:layout_below="@+id/textIIT"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+
+                <ImageView
+                    android:id="@+id/director_image"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ub_desai"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/director_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="U. B. Desai"
+                    android:gravity="center"
+                    android:layout_below="@+id/director_image"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/director_designation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Director IIT HYDERABAD"
+                    android:gravity="center"
+                    android:layout_below="@+id/director_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@+id/director_designation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/description_director"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_below="@+id/director_tab"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/black"
+                android:text="COPYRIGHT © Indian Institute Of Technology, Hyderabad - 2017 "
+                android:textColor="@android:color/white"
+                android:gravity="center"/>
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+</RelativeLayout>
