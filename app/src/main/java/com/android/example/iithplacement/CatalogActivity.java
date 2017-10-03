@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.text.Layout;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -29,9 +30,10 @@ public class CatalogActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Uri uri;
-    String IITHWebsite="https://iith-placement-cell.000webhostapp.com/";
-    private int position = -1;
-    private int aplhaImage = 1;
+    String IITHWebsite = "https://iith-placement-cell.000webhostapp.com/";
+    String StudenLogin = "http://iith.ac.in/aims/";
+    private int position=-1;
+    private int aplhaImage=1;
 
 
     @Override
@@ -45,12 +47,6 @@ public class CatalogActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         final View view = (View) findViewById(R.id.mainRelativeBackground);
-        int orientation = getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            view.setBackgroundResource (R.drawable.front_catalog);
-        } else {
-            view.setBackgroundResource (R.drawable.iith4);
-        }
 
         final int[] imageArray = {R.drawable.iith4, R.drawable.iith5, R.drawable.iith6};
 
@@ -70,11 +66,10 @@ public class CatalogActivity extends AppCompatActivity
                             position = 0;
                         // Set Image
                         Animation anim_in = AnimationUtils.loadAnimation(CatalogActivity.this, R.anim.fade_in);
-                        Animation anim_out= AnimationUtils.loadAnimation(CatalogActivity.this, R.anim.fade_out);
+
 
                         view.setBackgroundResource(imageArray[position]);
                         view.setAnimation(anim_in);
-
 
 
                     }
@@ -88,8 +83,11 @@ public class CatalogActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 uri = Uri.parse(IITHWebsite);
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
 
 
             }
@@ -142,18 +140,37 @@ public class CatalogActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        android.app.FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_brochure) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(CatalogActivity.this,BrochureActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_studenlogin) {
+            uri = Uri.parse(StudenLogin);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_email) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:placement@iith.ac.in"));
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Query from xyz name regarding xyz");
+            intent.putExtra(Intent.EXTRA_TEXT, "Respected Sir/Mam, \n \n \n Yours faithfully, \n xyz.");
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_team) {
+            Intent intent = new Intent(CatalogActivity.this, Placement_Team_Activity.class);
+            startActivity(intent);
+
 
         }
 

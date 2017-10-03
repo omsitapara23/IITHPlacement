@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/rate"
+        android:orderInCategory="200"
+        android:title="Rate this app"
+        app:showAsAction="never"/>
+
 </menu>
