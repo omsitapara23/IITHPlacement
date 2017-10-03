@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.example.iithplacement.Placement_Team_Activity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainRelativeBackground"></View>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainRelative">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:id="@+id/logoImage">
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/iith_logo"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/logoImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textIIT">
+                <TextView
+
+                    android:id="@+id/bodyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"
+                    android:text="TRAINING AND PLACEMENT TEAM \n IIT HYDERABAD"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/director_tab"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/magnitude_director"
+                android:padding="16dp"
+                android:layout_below="@+id/textIIT"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+                <TextView
+                    android:id="@+id/tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Team Member : "
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/director_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Om Sitapara"
+                    android:gravity="center"
+                    android:layout_below="@+id/tag"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/director_designation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email: cs16btech11036@iith.ac.in"
+                    android:gravity="center"
+                    android:layout_below="@+id/director_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/member1"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/magnitude_director"
+                android:padding="16dp"
+                android:layout_below="@+id/director_tab"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+                <TextView
+                    android:id="@+id/mem1_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Team Member : "
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/mem1_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Harshit Patel"
+                    android:gravity="center"
+                    android:layout_below="@+id/mem1_tag"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/mem1_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email: cs16btech11017@iith.ac.in"
+                    android:gravity="center"
+                    android:layout_below="@+id/mem1_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/member2"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/magnitude_director"
+                android:padding="16dp"
+                android:layout_below="@+id/member1"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+                <TextView
+                    android:id="@+id/mem2_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Team Member : "
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/mem2_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saksham Mittal"
+                    android:gravity="center"
+                    android:layout_below="@+id/mem2_tag"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"/>
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/mem2_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email: cs16btech11032@iith.ac.in"
+                    android:gravity="center"
+                    android:layout_below="@+id/mem2_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_below="@+id/member2"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/black"
+                android:text="COPYRIGHT © Indian Institute Of Technology, Hyderabad - 2017 "
+                android:textColor="@android:color/white"
+                android:gravity="center"/>
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+</RelativeLayout>
+
+

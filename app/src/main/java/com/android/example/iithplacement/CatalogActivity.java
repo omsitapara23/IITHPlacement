@@ -154,9 +154,10 @@ public class CatalogActivity extends AppCompatActivity
                 startActivity(intent);
             }
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_credits) {
+            Intent intent = new Intent(CatalogActivity.this, CreditsActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_email) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
