@@ -159,7 +159,11 @@ public class CatalogActivity extends AppCompatActivity
             startActivity(intent);
 
 
-        } else if (id == R.id.nav_email) {
+        } else if(id == R.id.nav_dates){
+            Intent intent = new Intent(CatalogActivity.this,DateActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_email) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:placement@iith.ac.in"));
             intent.putExtra(Intent.EXTRA_SUBJECT, "Query from xyz name regarding xyz");
