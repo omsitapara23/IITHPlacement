@@ -68,7 +68,7 @@
                     android:id="@+id/tag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Team Leader : "
+                    android:text="Team Leadrer : "
                     android:textColor="@android:color/white"
                     android:gravity="center"
                     android:textSize="20sp"/>

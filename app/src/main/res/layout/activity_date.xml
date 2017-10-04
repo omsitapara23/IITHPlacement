@@ -9,13 +9,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dates from sites will be shown here"
-        android:textSize="36sp"/>
+        android:text="Dates from sites will be shown here \n Example \n 08-10-2017 Human Library Event"
+        android:textSize="30sp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:id="@+id/notification_date"
         android:text="Example notification"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/notification_date"
+        android:text="Add event to calander"
+        android:id="@+id/calander_button"/>
 
 </RelativeLayout>
