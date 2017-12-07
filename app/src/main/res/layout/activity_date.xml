@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.android.example.iithplacement.DateActivity">
 
-    <TextView
+    <ListView
+
+        android:id="@+id/list"
+        android:paddingTop="16dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dates from sites will be shown here \n Example \n 08-10-2017 Human Library Event"
-        android:textSize="30sp"/>
-    <Button
+        android:layout_height="wrap_content" />
+   <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+
         android:id="@+id/notification_date"
-        android:text="Example notification"/>
+        android:text="Example notification"
+        android:layout_below="@+id/list"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

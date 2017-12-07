@@ -21,6 +21,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.android.example.iithplacement.sync.NotificationUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,6 +37,8 @@ public class CatalogActivity extends AppCompatActivity
     private int position=-1;
     private int aplhaImage=1;
 
+    public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class CatalogActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        NotificationUtils.scheduleNotificationRemainder(this);
         final View view = (View) findViewById(R.id.mainRelativeBackground);
 
         final int[] imageArray = {R.drawable.iith4, R.drawable.iith5, R.drawable.iith6};

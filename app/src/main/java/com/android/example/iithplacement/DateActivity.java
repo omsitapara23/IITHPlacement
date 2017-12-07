@@ -1,10 +1,13 @@
 package com.android.example.iithplacement;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.AsyncTaskLoader;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
@@ -12,11 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import com.android.example.iithplacement.Utils.FetchNotifications;
+import com.android.example.iithplacement.sync.NotificationBuilding;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DateActivity extends AppCompatActivity {
@@ -25,27 +35,29 @@ public class DateActivity extends AppCompatActivity {
     Button calanderButton;
     private static final int CALANDER_PERMISSION_REQUEST_CODE = 22;
     String startDate = "08 oct 2017";
+    public static final String requestUrl = "https://api.myjson.com/bins/13ffa7";
+    private EventAdapter mAdapter;
+    private ListView listView;
+    private ArrayList<DateEvent> dateList;
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date);
+
+        mAdapter = new EventAdapter(this, new ArrayList<DateEvent>());
+        listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(mAdapter);
+
+
 
         notificationButton = (Button) findViewById(R.id.notification_date);
         calanderButton = (Button) findViewById(R.id.calander_button);
         notificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), DateActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
-                mBuilder.setContentIntent(pendingIntent);
-                mBuilder.setSmallIcon(R.drawable.iith_logo);
-                mBuilder.setContentTitle("New Announcement");
-                mBuilder.setContentText("8 oct 2017: Human library event ");
-
-                NotificationManager notificationManager = (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
-                notificationManager.notify(001, mBuilder.build());
+                NotificationBuilding.remindUserBecauseNewAnnouncement(DateActivity.this,"898989","hehehe");
             }
         });
 
@@ -56,8 +68,32 @@ public class DateActivity extends AppCompatActivity {
             }
         });
 
+        dateasyncTask event = new dateasyncTask();
+        event.execute();
 
 
+
+    }
+
+    private void updateUi(ArrayList<DateEvent> events){
+        mAdapter.addAll(events);
+
+    }
+
+    private class dateasyncTask extends AsyncTask<Void, Void, ArrayList<DateEvent>>{
+
+
+
+        @Override
+        protected ArrayList<DateEvent> doInBackground(Void... voids) {
+            dateList = FetchNotifications.fetchBooksData(requestUrl);
+            return dateList;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<DateEvent> dateEvents) {
+            updateUi(dateEvents);
+        }
     }
 
     public void onCalanderUpdate(View v){
@@ -111,5 +147,6 @@ public class DateActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }
 
