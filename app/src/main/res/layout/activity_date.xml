@@ -5,27 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.android.example.iithplacement.DateActivity">
-
     <ListView
-
         android:id="@+id/list"
-        android:paddingTop="16dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-   <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:divider="@android:color/white"
+        android:dividerHeight="10dp"
+        android:padding="16dp"
+        android:scrollbarSize="5dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarThumbVertical="@drawable/scrollbar">
 
-        android:id="@+id/notification_date"
-        android:text="Example notification"
-        android:layout_below="@+id/list"/>
-    <Button
+    </ListView>
+
+    <ImageView
+        android:id="@+id/noInternetImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/notification_date"
-        android:text="Add event to calander"
-        android:id="@+id/calander_button"/>
+        android:src="@drawable/no_internet"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/loadingImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/loading_indicator"
+        android:layout_centerInParent="true"
+        android:background="@android:color/black"
+        android:src="@drawable/loading_please"
+        android:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:indeterminate="true" />
+
 
 </RelativeLayout>

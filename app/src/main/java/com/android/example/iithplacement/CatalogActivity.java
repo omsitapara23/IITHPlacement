@@ -53,34 +53,7 @@ public class CatalogActivity extends AppCompatActivity
         NotificationUtils.scheduleNotificationRemainder(this);
         final View view = (View) findViewById(R.id.mainRelativeBackground);
 
-        final int[] imageArray = {R.drawable.iith4, R.drawable.iith5, R.drawable.iith6};
-
-        Timer mTimer = new Timer();
-        mTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                // As timer is not a Main/UI thread need to do all UI task on runOnUiThread
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // increase your position so new image will show
-                        position++;
-                        // check whether position increased to length then set it to 0
-                        // so it will show images in circuler
-                        if (position >= imageArray.length)
-                            position = 0;
-                        // Set Image
-                        Animation anim_in = AnimationUtils.loadAnimation(CatalogActivity.this, R.anim.fade_in);
-
-
-                        view.setBackgroundResource(imageArray[position]);
-                        view.setAnimation(anim_in);
-
-
-                    }
-                });
-            }
-        }, 0, 6000);
+        view.setBackgroundResource(R.drawable.iith4);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

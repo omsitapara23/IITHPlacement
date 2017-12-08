@@ -124,7 +124,7 @@ public class FetchNotifications {
             JSONObject jsonObject=new JSONObject(jsonResponse);
             JSONArray eventsArray=new JSONArray();
             try{
-                eventsArray=jsonObject.getJSONArray("array");
+                eventsArray=jsonObject.getJSONArray("Sheet1");
             }catch (JSONException ignored){
 
             }
@@ -150,12 +150,12 @@ public class FetchNotifications {
             JSONObject jsonObject=new JSONObject(jsonResponse);
             JSONArray eventsArray=new JSONArray();
             try{
-                eventsArray=jsonObject.getJSONArray("array");
+                eventsArray=jsonObject.getJSONArray("Sheet1");
             }catch (JSONException ignored){
 
             }
 
-            JSONObject firstEvent = eventsArray.getJSONObject(0);
+            JSONObject firstEvent = eventsArray.getJSONObject(eventsArray.length() - 1);
             String date = firstEvent.getString("date");
             String event = firstEvent.getString("event");
 

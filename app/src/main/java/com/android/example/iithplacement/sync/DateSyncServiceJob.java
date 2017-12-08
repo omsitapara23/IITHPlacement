@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import com.android.example.iithplacement.DateActivity;
 import com.android.example.iithplacement.DateEvent;
 import com.android.example.iithplacement.Utils.FetchNotifications;
+import com.android.example.iithplacement.Utils.PrefrenceManagment;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 
@@ -23,8 +24,13 @@ public class DateSyncServiceJob extends JobService {
             protected Object doInBackground(Object[] objects) {
                 Context context = DateSyncServiceJob.this;
                 DateEvent dateEvent = FetchNotifications.fetchFirstEvent(DateActivity.requestUrl);
-                if(dateEvent != null)
-                    NotificationBuilding.remindUserBecauseNewAnnouncement(context,dateEvent.getmDate(),dateEvent.getmEvent());
+                String last_event = PrefrenceManagment.getLast_event_key(context);
+                if(last_event.equals(dateEvent.getmEvent())){
+
+                    return null;
+                }
+                PrefrenceManagment.setLast_event_key(context,dateEvent.getmEvent());
+                NotificationBuilding.remindUserBecauseNewAnnouncement(context,dateEvent.getmDate(),dateEvent.getmEvent());
                 return null;
             }
 
