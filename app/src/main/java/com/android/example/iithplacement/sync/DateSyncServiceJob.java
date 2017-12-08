@@ -2,6 +2,7 @@ package com.android.example.iithplacement.sync;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.android.example.iithplacement.DateActivity;
 import com.android.example.iithplacement.DateEvent;
@@ -25,6 +26,7 @@ public class DateSyncServiceJob extends JobService {
                 Context context = DateSyncServiceJob.this;
                 DateEvent dateEvent = FetchNotifications.fetchFirstEvent(DateActivity.requestUrl);
                 String last_event = PrefrenceManagment.getLast_event_key(context);
+                Log.v("Got event",dateEvent.getmEvent());
                 if(last_event.equals(dateEvent.getmEvent())){
 
                     return null;
