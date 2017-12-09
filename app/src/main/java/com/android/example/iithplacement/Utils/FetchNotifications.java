@@ -39,6 +39,18 @@ public class FetchNotifications {
 
     }
 
+    public  static ArrayList<DateEvent> fetchAnnouncementData(String request_url) {
+
+
+        URL url=createUrl(request_url);
+        String jsonResponse="";
+        jsonResponse=makeHttpRequest(url);
+        Log.v("This is the response", jsonResponse);
+        ArrayList<DateEvent> dateList=fetchAnnouncement(jsonResponse);
+        return  dateList;
+
+    }
+
     public  static DateEvent fetchFirstEvent(String request_url) {
 
 
@@ -47,6 +59,18 @@ public class FetchNotifications {
         jsonResponse=makeHttpRequest(url);
         Log.v("This is the response", jsonResponse);
         DateEvent dateEvent=fetchEvent(jsonResponse);
+        return  dateEvent;
+
+    }
+
+    public  static DateEvent fetchFirstAnnouncement(String request_url) {
+
+
+        URL url=createUrl(request_url);
+        String jsonResponse="";
+        jsonResponse=makeHttpRequest(url);
+        Log.v("This is the response", jsonResponse);
+        DateEvent dateEvent=fetchAnnouncementSingle(jsonResponse);
         return  dateEvent;
 
     }
@@ -129,12 +153,40 @@ public class FetchNotifications {
 
             }
 
-            for (int i = 0; i <eventsArray.length() ; i++){
+            for (int i = eventsArray.length() - 1; i >= 0 ; i--){
                 JSONObject currentEvent= eventsArray.getJSONObject(i);
                 String date = currentEvent.getString("date");
                 String event = currentEvent.getString("event");
 
                 DateEvent dateEvent=new DateEvent(date,event);
+                datelist.add(dateEvent);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return datelist;
+    }
+
+    public static ArrayList<DateEvent> fetchAnnouncement(String jsonResponse){
+        ArrayList<DateEvent> datelist=new ArrayList<>();
+        try {
+            JSONObject jsonObject=new JSONObject(jsonResponse);
+            JSONArray eventsArray=new JSONArray();
+            try{
+                eventsArray=jsonObject.getJSONArray("Sheet1");
+            }catch (JSONException ignored){
+
+            }
+
+            for (int i = eventsArray.length() - 1; i >= 0 ; i--){
+                JSONObject currentEvent= eventsArray.getJSONObject(i);
+                String date = currentEvent.getString("Date");
+                String event = currentEvent.getString("Announcement");
+                String post = currentEvent.getString("Timestamp");
+                String authority = currentEvent.getString("Authority_Name");
+
+                DateEvent dateEvent=new DateEvent(date,event,authority,post);
                 datelist.add(dateEvent);
             }
 
@@ -168,5 +220,31 @@ public class FetchNotifications {
 
         return dateEvent;
     }
+
+    public static DateEvent fetchAnnouncementSingle(String jsonResponse){
+        DateEvent dateEvent = null;
+        try {
+            JSONObject jsonObject=new JSONObject(jsonResponse);
+            JSONArray eventsArray=new JSONArray();
+            try{
+                eventsArray=jsonObject.getJSONArray("Sheet1");
+            }catch (JSONException ignored){
+
+            }
+
+            JSONObject firstEvent = eventsArray.getJSONObject(eventsArray.length() - 1);
+            String date = firstEvent.getString("Date");
+            String event = firstEvent.getString("Announcement");
+
+            dateEvent = new DateEvent(date,event);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return dateEvent;
+    }
+
 
 }

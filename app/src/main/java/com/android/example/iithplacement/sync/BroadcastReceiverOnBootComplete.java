@@ -14,6 +14,7 @@ public class BroadcastReceiverOnBootComplete extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction().equalsIgnoreCase(Intent.ACTION_BOOT_COMPLETED)){
             NotificationUtils.scheduleNotificationRemainder(context);
+            NotificationUtils.scheduleAnnouncementRemainder(context);
         }
     }
 }

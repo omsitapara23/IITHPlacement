@@ -6,12 +6,20 @@ package com.android.example.iithplacement;
 
 public class DateEvent {
 
-    private String mDate ,mEvent;
+    private String mDate ,mEvent, mAuthority, mPostDate;
 
-    public DateEvent(String title, String Author) {
+    public DateEvent(String date, String event) {
 
-        mDate = title;
-        mEvent = Author;
+        mDate = date;
+        mEvent = event;
+
+    }
+
+    public DateEvent(String date, String event, String authority, String postDate){
+        mDate = date;
+        mEvent = event;
+        mAuthority = authority;
+        mPostDate = postDate;
 
     }
 
@@ -22,5 +30,9 @@ public class DateEvent {
     public String getmEvent() {
         return mEvent;
     }
+
+    public String getmAuthority() {return  mAuthority;}
+
+    public String getmPostDate() {return  mPostDate;}
 
 }

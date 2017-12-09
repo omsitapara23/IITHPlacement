@@ -21,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.android.example.iithplacement.Utils.AnnouncementActivity;
 import com.android.example.iithplacement.sync.NotificationUtils;
 
 import java.util.Timer;
@@ -51,6 +52,7 @@ public class CatalogActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         NotificationUtils.scheduleNotificationRemainder(this);
+        NotificationUtils.scheduleAnnouncementRemainder(this);
         final View view = (View) findViewById(R.id.mainRelativeBackground);
 
         view.setBackgroundResource(R.drawable.iith4);
@@ -155,6 +157,10 @@ public class CatalogActivity extends AppCompatActivity
             startActivity(intent);
 
 
+        }
+        else if(id == R.id.nav_announce){
+            Intent intent = new Intent(CatalogActivity.this, AnnouncementActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

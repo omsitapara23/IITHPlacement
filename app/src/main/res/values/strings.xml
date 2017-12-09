@@ -14,4 +14,5 @@
     <string name="hussain">Email: <u>atheeqhussain@iith.ac.in</u></string>
     <string name="pranitha">Email: <u>pranitha@iith.ac.in</u></string>
     <string name="vijay">Email: <u>vijayakumarh@iith.ac.in</u></string>
+    <string name="title_activity_announcement">Announcement</string>
 </resources>

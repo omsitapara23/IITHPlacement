@@ -6,16 +6,17 @@ import android.util.Log;
 
 import com.android.example.iithplacement.DateActivity;
 import com.android.example.iithplacement.DateEvent;
+import com.android.example.iithplacement.Utils.AnnouncementActivity;
 import com.android.example.iithplacement.Utils.FetchNotifications;
 import com.android.example.iithplacement.Utils.PrefrenceManagment;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 
 /**
- * Created by om on 7/12/17.
+ * Created by om on 9/12/17.
  */
 
-public class DateSyncServiceJob extends JobService {
+public class AnnouncementSync extends JobService {
 
     private AsyncTask mTask;
     @Override
@@ -23,16 +24,18 @@ public class DateSyncServiceJob extends JobService {
         mTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                Context context = DateSyncServiceJob.this;
-                DateEvent dateEvent = FetchNotifications.fetchFirstEvent(DateActivity.requestUrl);
-                String last_event = PrefrenceManagment.getLast_event_key(context);
+                Context context = AnnouncementSync.this;
+                DateEvent dateEvent = FetchNotifications.fetchFirstAnnouncement(AnnouncementActivity.requestUrl);
+                String last_event = PrefrenceManagment.getLast_announcement(context);
                 Log.v("Got event",dateEvent.getmEvent());
                 if(last_event.equals(dateEvent.getmEvent()) || dateEvent == null){
 
                     return null;
                 }
-                PrefrenceManagment.setLast_event_key(context,dateEvent.getmEvent());
-                NotificationBuilding.remindUserBecauseNewAnnouncement(context,dateEvent.getmDate(),dateEvent.getmEvent(),1);
+                String date = dateEvent.getmDate();
+                String[] seperatedDate = date.split("T");
+                PrefrenceManagment.setLast_announcement(context,dateEvent.getmEvent());
+                NotificationBuilding.remindUserBecauseNewAnnouncement(context,seperatedDate[0],dateEvent.getmEvent(),2);
                 return null;
             }
 

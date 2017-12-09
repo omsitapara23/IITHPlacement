@@ -9,6 +9,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.android.example.iithplacement.DateActivity;
 import com.android.example.iithplacement.R;
+import com.android.example.iithplacement.Utils.AnnouncementActivity;
 
 
 /**
@@ -29,13 +30,19 @@ public class NotificationBuilding {
     }
 
 
-    public static void remindUserBecauseNewAnnouncement(Context context, String date, String event) {
+    public static void remindUserBecauseNewAnnouncement(Context context, String date, String event, int id) {
 
+        Intent intent = null;
 
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
-        Intent intent = new Intent(context, DateActivity.class);
+        if(id == 1) {
+            intent = new Intent(context, DateActivity.class);
+        }
+        else if(id == 2){
+            intent = new Intent(context, AnnouncementActivity.class);
+        }
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setSmallIcon(R.drawable.iith_logo);

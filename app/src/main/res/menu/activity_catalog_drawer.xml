@@ -18,6 +18,10 @@
             android:id="@+id/nav_dates"
             android:icon="@drawable/ic_date_range_black_24dp"
             android:title="Important Dates"/>
+        <item
+            android:id="@+id/nav_announce"
+            android:icon="@drawable/ic_announcement_black_24dp"
+            android:title="Announcements"/>
     </group>
 
     <item android:title="Communicate">
