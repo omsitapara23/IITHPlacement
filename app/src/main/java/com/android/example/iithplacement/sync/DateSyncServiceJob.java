@@ -26,8 +26,11 @@ public class DateSyncServiceJob extends JobService {
                 Context context = DateSyncServiceJob.this;
                 DateEvent dateEvent = FetchNotifications.fetchFirstEvent(DateActivity.requestUrl);
                 String last_event = PrefrenceManagment.getLast_event_key(context);
-                Log.v("Got event",dateEvent.getmEvent());
-                if(last_event.equals(dateEvent.getmEvent()) || dateEvent == null){
+                //Log.v("Got event",dateEvent.getmEvent());
+                if(dateEvent == null){
+                    return null;
+                }
+                if(last_event.equals(dateEvent.getmEvent())){
 
                     return null;
                 }

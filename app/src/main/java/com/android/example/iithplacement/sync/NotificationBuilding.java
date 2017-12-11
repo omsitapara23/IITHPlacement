@@ -47,7 +47,7 @@ public class NotificationBuilding {
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setSmallIcon(R.drawable.iith_logo);
         mBuilder.setContentTitle("New Announcement");
-        mBuilder.setContentText(date + ":" + event);
+        mBuilder.setContentText(date + " : " + event);
         mBuilder.setAutoCancel(true);
         mBuilder.setVibrate(new long[]{1000, 1000});
         mBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);

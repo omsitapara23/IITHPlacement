@@ -98,22 +98,22 @@ public class FetchNotifications {
         try {
             httpURLConnection=(HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.setReadTimeout(10000);
-            httpURLConnection.setConnectTimeout(15000);
+            httpURLConnection.setReadTimeout(30000);
+            httpURLConnection.setConnectTimeout(45000);
             httpURLConnection.connect();
             if(httpURLConnection.getResponseCode()==200){
                 inputStream = httpURLConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             }else{
                 //Log.e(LOG_TAG,"Error response code: " + httpURLConnection.getResponseCode());
+
             }
 
 
 
-        } catch (IOException e) {
+        }  catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             if(url!=null){
                 httpURLConnection.disconnect();
             }
@@ -211,7 +211,12 @@ public class FetchNotifications {
             String date = firstEvent.getString("date");
             String event = firstEvent.getString("event");
 
-            dateEvent = new DateEvent(date,event);
+            if(date == "" || event ==""){
+                dateEvent = null;
+            }else{
+                dateEvent = new DateEvent(date,event);
+            }
+
 
 
         } catch (JSONException e) {
@@ -236,7 +241,11 @@ public class FetchNotifications {
             String date = firstEvent.getString("Date");
             String event = firstEvent.getString("Announcement");
 
-            dateEvent = new DateEvent(date,event);
+            if(date == "" || event ==""){
+                dateEvent = null;
+            }else{
+                dateEvent = new DateEvent(date,event);
+            }
 
 
         } catch (JSONException e) {

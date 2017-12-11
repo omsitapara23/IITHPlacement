@@ -52,7 +52,7 @@
         </activity>
         <activity
             android:name=".DateActivity"
-            android:label="Announcements"
+            android:label="Important Dates"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

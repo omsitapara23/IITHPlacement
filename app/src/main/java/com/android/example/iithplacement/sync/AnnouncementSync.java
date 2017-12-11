@@ -27,8 +27,11 @@ public class AnnouncementSync extends JobService {
                 Context context = AnnouncementSync.this;
                 DateEvent dateEvent = FetchNotifications.fetchFirstAnnouncement(AnnouncementActivity.requestUrl);
                 String last_event = PrefrenceManagment.getLast_announcement(context);
-                Log.v("Got event",dateEvent.getmEvent());
-                if(last_event.equals(dateEvent.getmEvent()) || dateEvent == null){
+                //Log.v("Got event",dateEvent.getmEvent());
+                if(dateEvent == null){
+                    return null;
+                }
+                if(last_event.equals(dateEvent.getmEvent())){
 
                     return null;
                 }
